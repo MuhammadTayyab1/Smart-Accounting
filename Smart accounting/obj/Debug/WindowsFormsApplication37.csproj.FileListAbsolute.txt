@@ -1,0 +1,9 @@
+c:\users\tayyab\documents\visual studio 2013\Projects\WindowsFormsApplication37\WindowsFormsApplication37\bin\Debug\WindowsFormsApplication37.exe.config
+c:\users\tayyab\documents\visual studio 2013\Projects\WindowsFormsApplication37\WindowsFormsApplication37\bin\Debug\WindowsFormsApplication37.exe
+c:\users\tayyab\documents\visual studio 2013\Projects\WindowsFormsApplication37\WindowsFormsApplication37\bin\Debug\WindowsFormsApplication37.pdb
+c:\users\tayyab\documents\visual studio 2013\Projects\WindowsFormsApplication37\WindowsFormsApplication37\obj\Debug\WindowsFormsApplication37.csprojResolveAssemblyReference.cache
+c:\users\tayyab\documents\visual studio 2013\Projects\WindowsFormsApplication37\WindowsFormsApplication37\obj\Debug\WindowsFormsApplication37.Form1.resources
+c:\users\tayyab\documents\visual studio 2013\Projects\WindowsFormsApplication37\WindowsFormsApplication37\obj\Debug\WindowsFormsApplication37.Properties.Resources.resources
+c:\users\tayyab\documents\visual studio 2013\Projects\WindowsFormsApplication37\WindowsFormsApplication37\obj\Debug\WindowsFormsApplication37.csproj.GenerateResource.Cache
+c:\users\tayyab\documents\visual studio 2013\Projects\WindowsFormsApplication37\WindowsFormsApplication37\obj\Debug\WindowsFormsApplication37.exe
+c:\users\tayyab\documents\visual studio 2013\Projects\WindowsFormsApplication37\WindowsFormsApplication37\obj\Debug\WindowsFormsApplication37.pdb
