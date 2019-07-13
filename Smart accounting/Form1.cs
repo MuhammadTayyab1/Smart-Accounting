@@ -31,6 +31,8 @@ namespace WindowsFormsApplication37
 
         string data = "";
 
+        //=========================================================================================================================
+
         List<double> cashdr = new List<double>();
         List<double> acrecdr = new List<double>();
         List<double> acpaydr = new List<double>();
@@ -44,6 +46,12 @@ namespace WindowsFormsApplication37
         List<double> capdr = new List<double>();
         List<double> assdr = new List<double>();
         List<double> landr = new List<double>();
+        List<double> buidr = new List<double>();
+        List<double> eqidr = new List<double>();
+        List<double> supdr = new List<double>();
+        List<double> merdr = new List<double>();
+        List<double> vehdr = new List<double>();
+        List<double> saldr = new List<double>();
 
         List<double> cashcr = new List<double>();
         List<double> acreccr = new List<double>();
@@ -58,7 +66,15 @@ namespace WindowsFormsApplication37
         List<double> capcr = new List<double>();
         List<double> asscr = new List<double>();
         List<double> lancr = new List<double>();
+        List<double> buicr = new List<double>();
+        List<double> eqicr = new List<double>();
+        List<double> supcr = new List<double>();
+        List<double> mercr = new List<double>();
+        List<double> vehcr = new List<double>();
+        List<double> salcr = new List<double>();
 
+
+        //=========================================================================================================================
 
         double cashtotal = 0;
         string cash = "";
@@ -86,11 +102,51 @@ namespace WindowsFormsApplication37
         string ass = "";
         double lantotal = 0;
         string lan = "";
+        double buitotal = 0;
+        string bui = "";
+        double eqitotal = 0;
+        string eqi = "";
+        double suptotal = 0;
+        string sup = "";
+        double mertotal = 0;
+        string mer = "";
+        double vehtotal = 0;
+        string veh = "";
+        double saltotal = 0;
+        string sal = "";
+
+
+        //=========================================================================================================================
+
+        // Income statement
+
+        List<double> incomerevenue = new List<double>();
+        List<double> incomeExpence = new List<double>();
+        string incomedata = "                   Income statement \n\n";
+
+
+
+
+        //=========================================================================================================================
+
+        // Balance sheet
+
+        List<double> balanceassest = new List<double>();
+        List<double> balanceliability = new List<double>();
+        List<double> balanceowner = new List<double>();
+        string balancesheetdata = "                      Balance sheet\n\n";
+
+
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            data += " __________________________________________________________________________\n";
+            button2.Enabled = false;
+            button3.Enabled = false;
+
+
+
+            data += " ________________________________________________________________________\n";
             data += "|  Date         |                Particulars                                                   |   Debit          |  Credit        |\n";
             data += "|_________|__________________________________________|___________|_________|\n\n\n\n";
             richTextBox1.Text = data;
@@ -115,8 +171,8 @@ namespace WindowsFormsApplication37
             comboBox1.Items.Add("Merchandise");
             comboBox1.Items.Add("Vehicle");
             comboBox1.Items.Add("Salaries expence");
-            
 
+            //=========================================================================================================================
 
             comboBox2.Items.Add("Cash");
             comboBox2.Items.Add("A/C Receivable");
@@ -138,6 +194,7 @@ namespace WindowsFormsApplication37
             comboBox2.Items.Add("Vehicle");
             comboBox2.Items.Add("Salaries expence");
 
+            //=========================================================================================================================
 
             comboBox3.Items.Add("Cash");
             comboBox3.Items.Add("A/C Receivable");
@@ -159,7 +216,9 @@ namespace WindowsFormsApplication37
             comboBox3.Items.Add("Vehicle");
             comboBox3.Items.Add("Salaries expence");
 
-            
+
+            //=========================================================================================================================
+
 
             comboBox4.Items.Add("Cash");
             comboBox4.Items.Add("A/C Receivable");
@@ -212,303 +271,439 @@ namespace WindowsFormsApplication37
 
         private void button1_Click(object sender, EventArgs e)
         {
-            d1 = "";
-            d2 = "";
-            c1 = "";
-            c2 = "";
+            try
+            {
+                if (textBox2.Text == "" || textBox4.Text == "" || textBox1.Text == "")
+                {
+                    MessageBox.Show("Enter values");
+                }
+                else
+                {
+                    
 
-            dr1 = 0;
-            dr2 = 0;
-            cr1 = 0;
-            cr2 = 0;
+                        d1 = "";
+                        d2 = "";
+                        c1 = "";
+                        c2 = "";
 
-            // values
-            dr1 = Convert.ToDouble(textBox2.Text);
-            cr1 = Convert.ToDouble(textBox4.Text);
+                        dr1 = 0;
+                        dr2 = 0;
+                        cr1 = 0;
+                        cr2 = 0;
 
-            // heads
-            d1 = comboBox1.SelectedItem.ToString();
-            c1 = comboBox3.SelectedItem.ToString();
+                        // values
+                        dr1 = Convert.ToDouble(textBox2.Text);
+                        cr1 = Convert.ToDouble(textBox4.Text);
+
+                        // heads
+                        d1 = comboBox1.SelectedItem.ToString();
+                        c1 = comboBox3.SelectedItem.ToString();
+
+
+
+                        if (checkBox1.Checked == true)
+                        {
+                            dr2 = Convert.ToDouble(textBox3.Text);
+                            d2 = comboBox2.SelectedItem.ToString();
+                        }
+                        if (checkBox2.Checked == true)
+                        {
+                            cr2 = Convert.ToDouble(textBox5.Text);
+                            c2 = comboBox4.SelectedItem.ToString();
+                        }
+
+                        //  MessageBox.Show("  dr 1  = " + dr1 + "    cr 1  = " + cr1 + "   dr 2  = " + dr2 + "    cr 2 = " + cr2);
+
+
+                        data += " " + textBox1.Text + "                     " + d1 + "                                      " + dr1 + "           \n";
+                        if (checkBox1.Checked == true)
+                        {
+                            data += "                               " + d2 + "                                      " + dr2 + "           \n";
+                        }
+                        data += "\n                                                   " + c1 + "                                         " + cr1 + "            \n";
+
+                        if (checkBox2.Checked == true)
+                        {
+
+                            data += "                                                   " + c2 + "                                         " + cr2 + "            \n";
+                        }
+                        data += "\n";
+                        data += " ________________________________________________________________________\n\n\n\n";
+
+                        richTextBox1.Text = data;
+
+
+
+
+
+
+
+                        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+                        if (d1 == "Cash")
+                        {
+                            cashdr.Add(dr1);
+                        }
+                        else if (d1 == "A/C Receivable")
+                        {
+                            acrecdr.Add(dr1);
+                        }
+                        else if (d1 == "A/C Payable")
+                        {
+                            acpaydr.Add(dr1);
+                        }
+                        else if (d1 == "Note Receivable")
+                        {
+                            noterecdr.Add(dr1);
+                        }
+                        else if (d1 == "Note Payable")
+                        {
+                            notepaydr.Add(dr1);
+                        }
+                        else if (d1 == "Expence")
+                        {
+                            expdr.Add(dr1);
+                        }
+                        else if (d1 == "Service")
+                        {
+                            serdr.Add(dr1);
+                        }
+                        else if (d1 == "Divideds")
+                        {
+                            divdr.Add(dr1);
+                        }
+                        else if (d1 == "Bank")
+                        {
+                            bandr.Add(dr1);
+                        }
+                        else if (d1 == "Drawing")
+                        {
+                            dradr.Add(dr1);
+                        }
+                        else if (d1 == "Capital stock")
+                        {
+                            capdr.Add(dr1);
+                        }
+                        else if (d1 == "Assit")
+                        {
+                            assdr.Add(dr1);
+                        }
+                        else if (d1 == "Land")
+                        {
+                            landr.Add(dr1);
+                        }
+                        else if (d1 == "Building")
+                        {
+                            buidr.Add(dr1);
+                        }
+                        else if (d1 == "Equipments")
+                        {
+                            eqidr.Add(dr1);
+                        }
+                        else if (d1 == "Supplies")
+                        {
+                            supdr.Add(dr1);
+                        }
+                        else if (d1 == "Merchandise")
+                        {
+                            merdr.Add(dr1);
+                        }
+                        else if (d1 == "Vehicle")
+                        {
+                            vehdr.Add(dr1);
+                        }
+                        else if (d1 == "Salaries expence")
+                        {
+                            saldr.Add(dr1);
+                        }
+
+
+
+
+                        //=========================================================================================================================
+
+
+
+
+                        if (c1 == "Cash")
+                        {
+                            cashcr.Add(cr1);
+                        }
+                        else if (c1 == "A/C Receivable")
+                        {
+                            acreccr.Add(cr1);
+                        }
+                        else if (c1 == "A/C Payable")
+                        {
+                            acpaycr.Add(cr1);
+                        }
+                        else if (c1 == "Note Receivable")
+                        {
+                            notereccr.Add(cr1);
+                        }
+                        else if (c1 == "Note Payable")
+                        {
+                            notepaycr.Add(cr1);
+                        }
+                        else if (c1 == "Expence")
+                        {
+                            expcr.Add(cr1);
+                        }
+                        else if (c1 == "Service")
+                        {
+                            sercr.Add(cr1);
+                        }
+                        else if (c1 == "Divideds")
+                        {
+                            divcr.Add(cr1);
+                        }
+                        else if (c1 == "Bank")
+                        {
+                            bancr.Add(cr1);
+                        }
+                        else if (c1 == "Drawing")
+                        {
+                            dracr.Add(cr1);
+                        }
+                        else if (c1 == "Capital stock")
+                        {
+                            capcr.Add(cr1);
+                        }
+                        else if (c1 == "Assit")
+                        {
+                            asscr.Add(cr1);
+                        }
+                        else if (c1 == "Land")
+                        {
+                            lancr.Add(cr1);
+                        }
+                        else if (c1 == "Building")
+                        {
+                            buicr.Add(cr1);
+                        }
+                        else if (c1 == "Equipments")
+                        {
+                            eqicr.Add(cr1);
+                        }
+                        else if (c1 == "Supplies")
+                        {
+                            supcr.Add(cr1);
+                        }
+                        else if (c1 == "Merchandise")
+                        {
+                            mercr.Add(cr1);
+                        }
+                        else if (c1 == "Vehicle")
+                        {
+                            vehcr.Add(cr1);
+                        }
+                        else if (c1 == "Salaries expence")
+                        {
+                            salcr.Add(cr1);
+                        }
+
+                        //=========================================================================================================================
+
+                        if (checkBox1.Checked == true)
+                        {
+                            if (d2 == "Cash")
+                            {
+                                cashdr.Add(dr2);
+                            }
+                            else if (d2 == "A/C Receivable")
+                            {
+                                acrecdr.Add(dr2);
+                            }
+                            else if (d2 == "A/C Payable")
+                            {
+                                acpaydr.Add(dr2);
+                            }
+                            else if (d2 == "Note Receivable")
+                            {
+                                noterecdr.Add(dr2);
+                            }
+                            else if (d2 == "Note Payable")
+                            {
+                                notepaydr.Add(dr2);
+                            }
+                            else if (d2 == "Expence")
+                            {
+                                expdr.Add(dr2);
+                            }
+                            else if (d2 == "Service")
+                            {
+                                serdr.Add(dr2);
+                            }
+                            else if (d2 == "Divideds")
+                            {
+                                divdr.Add(dr2);
+                            }
+                            else if (d2 == "Bank")
+                            {
+                                bandr.Add(dr2);
+                            }
+                            else if (d2 == "Drawing")
+                            {
+                                dradr.Add(dr2);
+                            }
+                            else if (d2 == "Capital stock")
+                            {
+                                capdr.Add(dr2);
+                            }
+                            else if (d2 == "Assit")
+                            {
+                                assdr.Add(dr2);
+                            }
+                            else if (d2 == "Land")
+                            {
+                                landr.Add(dr2);
+                            }
+                            else if (d2 == "Building")
+                            {
+                                buidr.Add(dr2);
+                            }
+                            else if (d2 == "Equipments")
+                            {
+                                eqidr.Add(dr2);
+                            }
+                            else if (d2 == "Supplies")
+                            {
+                                supdr.Add(dr2);
+                            }
+                            else if (d2 == "Merchandise")
+                            {
+                                merdr.Add(dr2);
+                            }
+                            else if (d2 == "Vehicle")
+                            {
+                                vehdr.Add(dr2);
+                            }
+                            else if (d2 == "Salaries expence")
+                            {
+                                saldr.Add(dr2);
+                            }
+                        }
+
+                        //=======================================================================================================================
+
+                        if (checkBox2.Enabled == true)
+                        {
+                            if (c2 == "Cash")
+                            {
+                                cashcr.Add(cr2);
+                            }
+                            else if (c2 == "A/C Receivable")
+                            {
+                                acreccr.Add(cr2);
+                            }
+                            else if (c2 == "A/C Payable")
+                            {
+                                acpaycr.Add(cr2);
+                            }
+                            else if (c2 == "Note Receivable")
+                            {
+                                notereccr.Add(cr2);
+                            }
+                            else if (c2 == "Note Payable")
+                            {
+                                notepaycr.Add(cr2);
+                            }
+                            else if (c2 == "Expence")
+                            {
+                                expcr.Add(cr2);
+                            }
+                            else if (c2 == "Service")
+                            {
+                                sercr.Add(cr2);
+                            }
+                            else if (c2 == "Divideds")
+                            {
+                                divcr.Add(cr2);
+                            }
+                            else if (c2 == "Bank")
+                            {
+                                bancr.Add(cr2);
+                            }
+                            else if (c2 == "Drawing")
+                            {
+                                dracr.Add(cr2);
+                            }
+                            else if (c2 == "Capital stock")
+                            {
+                                capcr.Add(cr2);
+                            }
+                            else if (c2 == "Assit")
+                            {
+                                asscr.Add(cr2);
+                            }
+                            else if (c2 == "Land")
+                            {
+                                lancr.Add(cr2);
+                            }
+                            else if (c2 == "Building")
+                            {
+                                buicr.Add(cr2);
+                            }
+                            else if (c2 == "Equipments")
+                            {
+                                eqicr.Add(cr2);
+                            }
+                            else if (c2 == "Supplies")
+                            {
+                                supcr.Add(cr2);
+                            }
+                            else if (c2 == "Merchandise")
+                            {
+                                mercr.Add(cr2);
+                            }
+                            else if (c2 == "Vehicle")
+                            {
+                                vehcr.Add(cr2);
+                            }
+                            else if (c2 == "Salaries expence")
+                            {
+                                salcr.Add(cr2);
+                            }
+                        }
+
+
+                        textBox2.Clear();
+                        textBox3.Clear();
+                        textBox4.Clear();
+                        textBox5.Clear();
+                        button2.Enabled = true;
+
+                    }
+                }
             
-
-
-            if(checkBox1.Checked==true)
+            catch
             {
-                dr2 = Convert.ToDouble(textBox3.Text);
-                d2  = comboBox2.SelectedItem.ToString();
-            }
-            if (checkBox2.Checked == true)
-            {
-                cr2 = Convert.ToDouble(textBox5.Text);
-                c2  = comboBox4.SelectedItem.ToString();
-            }
-
-           //  MessageBox.Show("  dr 1  = " + dr1 + "    cr 1  = " + cr1 + "   dr 2  = " + dr2 + "    cr 2 = " + cr2);
-
-
-            data += " " + textBox1.Text + "                     " + d1 + "                                      " + dr1 + "           \n";
-            if (checkBox1.Checked == true)
-            {
-                data += "                               " + d2 + "                                      " + dr2 + "           \n";
-            }
-            data += "\n                                                   " + c1 + "                                         " + cr1 + "            \n";
-            
-            if(checkBox2.Checked==true)
-            {
-
-                data += "                                                   " + c2 + "                                         " + cr2 + "            \n";
-            }
-            data += "\n";
-            data += " __________________________________________________________________________\n\n\n\n";
-
-            richTextBox1.Text = data;
-
-
-           
-            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-            if (d1 == "Cash")
-            {
-                cashdr.Add(dr1);
-            }
-            else if (d1 == "A/C Receivable")
-            {
-                acrecdr.Add(dr1);
-            }
-            else if (d1 == "A/C Payable")
-            {
-                acpaydr.Add(dr1);
-            }
-            else if (d1 == "Note Receivable")
-            {
-                noterecdr.Add(dr1);
-            }
-            else if (d1 == "Note Payable")
-            {
-                notepaydr.Add(dr1);
-            }
-            else if (d1 == "Expence")
-            {
-                expdr.Add(dr1);
-            }
-            else if (d1 == "Service")
-            {
-                serdr.Add(dr1);
-            }
-            else if (d1 == "Divideds")
-            {
-                divdr.Add(dr1);
-            }
-            else if (d1 == "Bank")
-            {
-                bandr.Add(dr1);
-            }
-            else if (d1 == "Drawing")
-            {
-                dradr.Add(dr1);
-            }
-            else if (d1 == "Capital stock")
-            {
-                capdr.Add(dr1);
-            }
-            else if (d1 == "Assit")
-            {
-                assdr.Add(dr1);
-            }
-            else if (d1 == "Land")
-            {
-                landr.Add(dr1);
-            }
-
-            //==========================================================
-
-
-
-
-            if (c1 == "Cash")
-            {
-                cashcr.Add(cr1);
-            }
-            else if (c1 == "A/C Receivable")
-            {
-                acreccr.Add(cr1);
-            }
-            else if (c1 == "A/C Payable")
-            {
-                acpaycr.Add(cr1);
-            }
-            else if (c1 == "Note Receivable")
-            {
-                notereccr.Add(cr1);
-            }
-            else if (c1 == "Note Payable")
-            {
-                notepaycr.Add(cr1);
-            }
-            else if (c1 == "Expence")
-            {
-                expcr.Add(cr1);
-            }
-            else if (c1 == "Service")
-            {
-                sercr.Add(cr1);
-            }
-            else if (c1 == "Divideds")
-            {
-                divcr.Add(cr1);
-            }
-            else if (c1 == "Bank")
-            {
-                bancr.Add(cr1);
-            }
-            else if (c1 == "Drawing")
-            {
-                dracr.Add(cr1);
-            }
-            else if (c1 == "Capital stock")
-            {
-                capcr.Add(cr1);
-            }
-            else if (c1 == "Assit")
-            {
-                asscr.Add(cr1);
-            }
-            else if (c1 == "Land")
-            {
-                lancr.Add(cr1);
-            }
-
-            //==========================================================
-
-            if (checkBox1.Checked == true)
-            {
-                if (d2 == "Cash")
-                {
-                    cashdr.Add(dr2);
-                }
-                else if (d2 == "A/C Receivable")
-                {
-                    acrecdr.Add(dr2);
-                }
-                else if (d2 == "A/C Payable")
-                {
-                    acpaydr.Add(dr2);
-                }
-                else if (d2 == "Note Receivable")
-                {
-                    noterecdr.Add(dr2);
-                }
-                else if (d2 == "Note Payable")
-                {
-                    notepaydr.Add(dr2);
-                }
-                else if (d2 == "Expence")
-                {
-                    expdr.Add(dr2);
-                }
-                else if (d2 == "Service")
-                {
-                    serdr.Add(dr2);
-                }
-                else if (d2 == "Divideds")
-                {
-                    divdr.Add(dr2);
-                }
-                else if (d2 == "Bank")
-                {
-                    bandr.Add(dr2);
-                }
-                else if (d2 == "Drawing")
-                {
-                    dradr.Add(dr2);
-                }
-                else if (d2 == "Capital stock")
-                {
-                    capdr.Add(dr2);
-                }
-                else if (d2 == "Assit")
-                {
-                    assdr.Add(dr2);
-                }
-                else if (d2 == "Land")
-                {
-                    landr.Add(dr2);
-                }
-            }
-
-            //============================================================
-
-            if (checkBox2.Enabled == true)
-            {
-                if (c2 == "Cash")
-                {
-                    cashcr.Add(cr2);
-                }
-                else if (c2 == "A/C Receivable")
-                {
-                    acreccr.Add(cr2);
-                }
-                else if (c2 == "A/C Payable")
-                {
-                    acpaycr.Add(cr2);
-                }
-                else if (c2 == "Note Receivable")
-                {
-                    notereccr.Add(cr2);
-                }
-                else if (c2 == "Note Payable")
-                {
-                    notepaycr.Add(cr2);
-                }
-                else if (c2 == "Expence")
-                {
-                    expcr.Add(cr2);
-                }
-                else if (c2 == "Service")
-                {
-                    sercr.Add(cr2);
-                }
-                else if (c2 == "Divideds")
-                {
-                    divcr.Add(cr2);
-                }
-                else if (c2 == "Bank")
-                {
-                    bancr.Add(cr2);
-                }
-                else if (c2 == "Drawing")
-                {
-                    dracr.Add(cr2);
-                }
-                else if (c2 == "Capital stock")
-                {
-                    capcr.Add(cr2);
-                }
-                else if (c2 == "Assit")
-                {
-                    asscr.Add(cr2);
-                }
-                else if (c2 == "Land")
-                {
-                    lancr.Add(cr2);
-                }
+                MessageBox.Show("Select the name of head");
             }
 
 
-            textBox2.Clear();
-            textBox3.Clear();
-            textBox4.Clear();
-            textBox5.Clear();
-
+            //=========================================================================================================================
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+
+
+
+            button3.Enabled = true;
             
 
-            //================================================================================
-            //================================================================================
+
+
+            //============================================================================================================================
+            //============================================================================================================================
+
 
             // Cash
             double cashcountdr = 0;
@@ -537,7 +732,10 @@ namespace WindowsFormsApplication37
                 cash = "dr";
             }
 
-            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             // ac rec
             double acreccountdr = 0;
@@ -566,13 +764,16 @@ namespace WindowsFormsApplication37
                 acrec = "dr";
             }
 
-            //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-            // ac pay
+
+
+            //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            // ac payable
             double acpaycountdr = 0;
             double acpaycountcr = 0;
 
-            
+
 
             for (int i = 0; i < acpaydr.Count; i++)
             {
@@ -595,7 +796,10 @@ namespace WindowsFormsApplication37
                 acpay = "dr";
             }
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             // note rec
             double notereccountdr = 0;
@@ -624,9 +828,11 @@ namespace WindowsFormsApplication37
                 noterec = "dr";
             }
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-            // note pay
+
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            // note payable
             double notepaycountdr = 0;
             double notepaycountcr = 0;
 
@@ -653,7 +859,9 @@ namespace WindowsFormsApplication37
                 notepay = "dr";
             }
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             // Expence
             double expcountdr = 0;
@@ -684,7 +892,7 @@ namespace WindowsFormsApplication37
 
 
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             // Services
             double sercountdr = 0;
@@ -714,7 +922,7 @@ namespace WindowsFormsApplication37
             }
 
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             // Divideds
             double divcountdr = 0;
@@ -744,7 +952,7 @@ namespace WindowsFormsApplication37
             }
 
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             // Bank
             double bancountdr = 0;
@@ -775,7 +983,7 @@ namespace WindowsFormsApplication37
             }
 
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             // Drawing
             double dracountdr = 0;
@@ -806,7 +1014,7 @@ namespace WindowsFormsApplication37
             }
 
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             // Captial Stock
             double capcountdr = 0;
@@ -837,7 +1045,7 @@ namespace WindowsFormsApplication37
             }
 
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             // Assest
             double asscountdr = 0;
@@ -868,7 +1076,7 @@ namespace WindowsFormsApplication37
             }
 
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             // Land
             double lancountdr = 0;
@@ -898,6 +1106,190 @@ namespace WindowsFormsApplication37
                 lan = "dr";
             }
 
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            // building
+            double buicountdr = 0;
+            double buicountcr = 0;
+
+            
+
+
+            for (int i = 0; i < buidr.Count; i++)
+            {
+                buicountdr += buidr[i];
+            }
+            for (int i = 0; i < buicr.Count; i++)
+            {
+                buicountcr += buicr[i];
+            }
+
+
+            if (buicountcr > buicountdr)
+            {
+                buitotal = buicountcr - buicountdr;
+                bui = "cr";
+            }
+            if (buicountdr > buicountcr)
+            {
+                buitotal = buicountdr - buicountcr;
+                bui = "dr";
+            }
+
+
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            // equipments
+            double eqicountdr = 0;
+            double eqicountcr = 0;
+
+            
+
+
+            for (int i = 0; i < eqidr.Count; i++)
+            {
+                eqicountdr += eqidr[i];
+            }
+            for (int i = 0; i < eqicr.Count; i++)
+            {
+                eqicountcr += eqicr[i];
+            }
+
+
+            if (eqicountcr > eqicountdr)
+            {
+                eqitotal = eqicountcr - eqicountdr;
+                eqi = "cr";
+            }
+            if (eqicountdr > eqicountcr)
+            {
+                eqitotal = eqicountdr - eqicountcr;
+                eqi = "dr";
+            }
+
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            // supplies
+            double supcountdr = 0;
+            double supcountcr = 0;
+
+            
+
+
+            for (int i = 0; i < supdr.Count; i++)
+            {
+                supcountdr += supdr[i];
+            }
+            for (int i = 0; i < supcr.Count; i++)
+            {
+                supcountcr += supcr[i];
+            }
+
+
+            if (supcountcr > supcountdr)
+            {
+                suptotal = supcountcr - supcountdr;
+                sup = "cr";
+            }
+            if (supcountdr > supcountcr)
+            {
+                suptotal = supcountdr - supcountcr;
+                sup = "dr";
+            }
+
+
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            // merchandise
+            double mercountdr = 0;
+            double mercountcr = 0;
+
+          
+
+
+            for (int i = 0; i < merdr.Count; i++)
+            {
+                mercountdr += merdr[i];
+            }
+            for (int i = 0; i < mercr.Count; i++)
+            {
+                mercountcr += mercr[i];
+            }
+
+
+            if (mercountcr > mercountdr)
+            {
+                mertotal = mercountcr - mercountdr;
+                mer = "cr";
+            }
+            if (mercountdr > mercountcr)
+            {
+                mertotal = mercountdr - mercountcr;
+                mer = "dr";
+            }
+
+
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            // vehciles
+            double vehcountdr = 0;
+            double vehcountcr = 0;
+
+            
+
+
+            for (int i = 0; i < vehdr.Count; i++)
+            {
+                vehcountdr += vehdr[i];
+            }
+            for (int i = 0; i < vehcr.Count; i++)
+            {
+                vehcountcr += vehcr[i];
+            }
+
+
+            if (vehcountcr > vehcountdr)
+            {
+                vehtotal = vehcountcr - vehcountdr;
+                veh = "cr";
+            }
+            if (vehcountdr > vehcountcr)
+            {
+                vehtotal = vehcountdr - vehcountcr;
+                veh = "dr";
+            }
+
+
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            // salaries
+            double salcountdr = 0;
+            double salcountcr = 0;
+
+            
+
+
+            for (int i = 0; i < saldr.Count; i++)
+            {
+                salcountdr += saldr[i];
+            }
+            for (int i = 0; i < salcr.Count; i++)
+            {
+                salcountcr += salcr[i];
+            }
+
+
+            if (salcountcr > salcountdr)
+            {
+                saltotal = salcountcr - salcountdr;
+                sal = "cr";
+            }
+            if (salcountdr > salcountcr)
+            {
+                saltotal = salcountdr - salcountcr;
+                sal = "dr";
+            }
+
 
             string show = "              T-Accounts Solution\n\n\n";
 
@@ -914,6 +1306,12 @@ namespace WindowsFormsApplication37
             show += ("Capital stock              =  " + captotal + "    " + cap) + "\n";
             show += ("Assest                         =  " + asstotal + "    " + ass) + "\n";
             show += ("Land                            =  " + lantotal + "    " + lan) + "\n";
+            show += ("Building                      =  " + buitotal + "    " + bui) + "\n";
+            show += ("Equipments                =  " + eqitotal + "    " + eqi) + "\n";
+            show += ("Supplies                      =  " + suptotal + "    " + sup) + "\n";
+            show += ("Merchandise              =  " + mertotal + "    " + mer) + "\n";
+            show += ("Vehciles                       =  " + vehtotal + "    " + veh) + "\n";
+            show += ("Salaries                        =  " + saltotal + "    " + sal) + "\n";
 
             MessageBox.Show(show);
 
@@ -924,102 +1322,121 @@ namespace WindowsFormsApplication37
             double totaldr = 0;
             double totalcr = 0;
 
-            string traildata = "                            Trail balance         \n";
+            string traildata = "                                                    Trail balance         \n";
             traildata += "__________________________________________________________________________\n";
             traildata += "    Particulars                      Debit                              Credit\n";
             traildata += "__________________________________________________________________________\n";
 
 
+
+
+            //===============================================================================================================================
+
+
+            balancesheetdata += "      Assests:           \n";
+
+
+            //===============================================================================================================================
+
             if(cash=="dr")
             {
                 traildata += "    Cash                                "+cashtotal+"                    \n";
                 totaldr += cashtotal;
+
+                balancesheetdata += "                 Cash  =  " +cashtotal+"\n";
+                balanceassest.Add(cashtotal);
             }
             else
             {
                 traildata += "    Cash                                                                              "+cashtotal+"    \n";
                 totalcr += cashtotal;
+
+                balancesheetdata += "                 Cash  =  " + cashtotal + "\n";
+                balanceassest.Add(cashtotal);
             }
 
-            //=====================================================================================================
 
-            if (acpay == "dr")
-            {
-                traildata += "    Account payable                   " + acpaytotal + "                    \n";
-                totaldr += acpaytotal;
-            }
-            else
-            {
-                traildata += "    Account payable                                                         " + acpaytotal + "    \n";
-                totalcr += acpaytotal;
-            }
-
-            //=====================================================================================================
+            //===============================================================================================================================
 
             if (acrec == "dr")
             {
                 traildata += "    Account receiveable                " + acrectotal + "                    \n";
                 totaldr += acrectotal;
+
+                balancesheetdata += "                 Account receiable  =  " + acrectotal + "\n";
+                balanceassest.Add(acrectotal);
             }
             else
             {
                 traildata += "    Account receiveable                                                   " + acrectotal + "    \n";
                 totalcr += acrectotal;
+
+                balancesheetdata += "                 Account receiable  =  " + acrectotal + "\n";
+                balanceassest.Add(acrectotal);
             }
 
-            //=====================================================================================================
 
-            if (notepay == "dr")
-            {
-                traildata += "    Note payable                     " + notepaytotal + "                    \n";
-                totaldr += notepaytotal;
-            }
-            else
-            {
-                traildata += "    Note payable                                                               " + notepaytotal + "    \n";
-                totalcr += notepaytotal;
-            }
 
-            //=====================================================================================================
+            //===============================================================================================================================
 
             if (noterec == "dr")
             {
                 traildata += "    Note receiveable                      " + noterectotal + "                    \n";
                 totaldr += noterectotal;
+
+                balancesheetdata += "                 Note receiable  =  " + noterectotal + "\n";
+                balanceassest.Add(noterectotal);
             }
             else
             {
                 traildata += "    Note receiveable                                                         " + noterectotal + "    \n";
                 totalcr += noterectotal;
+
+                balancesheetdata += "                 Note receiable  =  " + noterectotal + "\n";
+                balanceassest.Add(noterectotal);
             }
 
-            //=====================================================================================================
-
-            if (exp == "dr")
-            {
-                traildata += "    Expence                         " + exptotal + "                    \n";
-                totaldr += exptotal;
-            }
-            else
-            {
-                traildata += "    Expence                                                                        " + exptotal + "    \n";
-                totalcr += exptotal;
-            }
-
-            //=====================================================================================================
+            //===============================================================================================================================
+            incomedata += "      Revenue:          \n";
 
             if (ser == "dr")
             {
                 traildata += "    Services                      " + sertotal + "                    \n";
                 totaldr += sertotal;
+
+                incomedata += "                  Revenue      =    " + sertotal + "\n";
+                incomerevenue.Add(sertotal);
             }
             else
             {
                 traildata += "    Service                                                                          " + sertotal + "    \n";
                 totalcr += sertotal;
+
+                incomedata += "                  Revenue      =    " + sertotal + "\n";
+                incomerevenue.Add(sertotal);
             }
 
-            //=====================================================================================================
+            //===============================================================================================================================
+            incomedata += "  less  Expence:          \n";
+
+            if (exp == "dr")
+            {
+                traildata += "    Expence                         " + exptotal + "                    \n";
+                totaldr += exptotal;
+
+                incomedata += "                  Expences     =    " + exptotal + "\n";
+                incomeExpence.Add(exptotal);
+            }
+            else
+            {
+                traildata += "    Expence                                                                        " + exptotal + "    \n";
+                totalcr += exptotal;
+
+                incomedata += "                  Expences     =    " + exptotal + "\n";
+                incomeExpence.Add(exptotal);
+            }
+
+            //===============================================================================================================================
 
             if (div == "dr")
             {
@@ -1032,20 +1449,27 @@ namespace WindowsFormsApplication37
                 totalcr += divtotal;
             }
 
-            // ===================================================================================================
+            // =============================================================================================================================
 
             if (ban == "dr")
             {
                 traildata += "    Bank                                " + bantotal + "                    \n";
                 totaldr += bantotal;
+
+                balancesheetdata += "                 Bank  =  " + bantotal + "\n";
+                balanceassest.Add(bantotal);
             }
             else
             {
                 traildata += "    Bank                                                                              " + bantotal + "    \n";
                 totalcr += bantotal;
+
+                balancesheetdata += "                 Bank  =  " + bantotal + "\n";
+                balanceassest.Add(bantotal);
+
             }
 
-            //=====================================================================================================
+            //===============================================================================================================================
 
 
 
@@ -1060,35 +1484,29 @@ namespace WindowsFormsApplication37
                 totalcr += dratotal;
             }
 
-            //=====================================================================================================
 
 
-            if (cap == "dr")
-            {
-                traildata += "    Capital stock                                " + captotal + "                    \n";
-                totaldr += captotal;
-            }
-            else
-            {
-                traildata += "    Capital stock                                                                " + captotal + "    \n";
-                totalcr += captotal;
-            }
-
-            //=====================================================================================================
+            //===============================================================================================================================
 
 
             if (ass == "dr")
             {
                 traildata += "    Assest                                " + asstotal + "                    \n";
                 totaldr += asstotal;
+
+                balancesheetdata += "                 Assest  =  " + asstotal + "\n";
+                balanceassest.Add(asstotal);
             }
             else
             {
                 traildata += "    Assest                                                                            " + asstotal + "    \n";
                 totalcr += asstotal;
+
+                balancesheetdata += "                 Assest  =  " + asstotal + "\n";
+                balanceassest.Add(asstotal);
             }
 
-            //=====================================================================================================
+            //===============================================================================================================================
 
 
 
@@ -1096,20 +1514,309 @@ namespace WindowsFormsApplication37
             {
                 traildata += "    Land                                " + lantotal + "                    \n";
                 totaldr += lantotal;
+
+                balancesheetdata += "                 Land  =  " + lantotal + "\n";
+                balanceassest.Add(lantotal);
             }
             else
             {
                 traildata += "    Land                                                                              " + lantotal + "    \n";
                 totalcr += lantotal;
+
+                balancesheetdata += "                 Land  =  " + lantotal + "\n";
+                balanceassest.Add(lantotal);
             }
 
-            //=====================================================================================================
+            //===============================================================================================================================
+
+
+            if (bui == "dr")
+            {
+                traildata += "    Building                             " + buitotal + "                    \n";
+                totaldr += buitotal;
+
+                balancesheetdata += "                 Building  =  " + buitotal + "\n";
+                balanceassest.Add(buitotal);
+            }
+            else
+            {
+                traildata += "    Building                                                                        " + buitotal + "    \n";
+                totalcr += buitotal;
+
+                balancesheetdata += "                 Building  =  " + buitotal + "\n";
+                balanceassest.Add(buitotal);
+            }
+
+            //===============================================================================================================================
+
+            if (eqi == "dr")
+            {
+                traildata += "    Equipments                           " + eqitotal + "                    \n";
+                totaldr += eqitotal;
+
+                balancesheetdata += "                 Equipments  =  " + eqitotal + "\n";
+                balanceassest.Add(eqitotal);
+            }
+            else
+            {
+                traildata += "    Equipments                                                                  " + eqitotal + "    \n";
+                totalcr += eqitotal;
+
+                balancesheetdata += "                 Equipments  =  " + eqitotal + "\n";
+                balanceassest.Add(eqitotal);
+            }
+
+            //===============================================================================================================================
+
+            if (sup == "dr")
+            {
+                traildata += "    Supplies                                " + suptotal + "                    \n";
+                totaldr += suptotal;
+
+                balancesheetdata += "                 Supplies  =  " + suptotal + "\n";
+                balanceassest.Add(suptotal);
+            }
+            else
+            {
+                traildata += "    Supplies                                                                        " + suptotal + "    \n";
+                totalcr += suptotal;
+
+                balancesheetdata += "                 Supplies  =  " + suptotal + "\n";
+                balanceassest.Add(suptotal);
+            }
+
+
+
+            //===============================================================================================================================
+
+            if (mer == "dr")
+            {
+                traildata += "    Merchandise                            " + mertotal + "                    \n";
+                totaldr += mertotal;
+
+                balancesheetdata += "                 Merchandise  =  " + mertotal + "\n";
+                balanceassest.Add(mertotal);
+            }
+            else
+            {
+                traildata += "    Merchandise                                                                 " + mertotal + "    \n";
+                totalcr += mertotal;
+
+                balancesheetdata += "                 Merchandise  =  " + mertotal + "\n";
+                balanceassest.Add(mertotal);
+            }
+
+            //===============================================================================================================================
+
+
+            if (veh == "dr")
+            {
+                traildata += "    Vechiles                             " + vehtotal + "                    \n";
+                totaldr += vehtotal;
+
+                balancesheetdata += "                 Vechiles  =  " + vehtotal + "\n";
+                balanceassest.Add(vehtotal);
+            }
+            else
+            {
+                traildata += "    Vechiles                                                                         " + vehtotal + "    \n";
+                totalcr += vehtotal;
+
+                balancesheetdata += "                 Vechiles  =  " + vehtotal + "\n";
+                balanceassest.Add(vehtotal);
+            }
+
+            //===============================================================================================================================
+
+            if (sal == "dr")
+            {
+                traildata += "    Salaries                                " + saltotal + "                    \n";
+                totaldr += saltotal;
+
+                incomedata += "                  Salaries Expences     =    " + saltotal + "\n";
+                incomeExpence.Add(saltotal);
+            }
+            else
+            {
+                traildata += "    Salaries                                                                          " + saltotal + "    \n";
+                totalcr += saltotal;
+
+                incomedata += "                  Salaries Expences     =    " + saltotal + "\n";
+                incomeExpence.Add(saltotal);
+            }
+
+
+
+
+            //===============================================================================================================================
+
+
+            balancesheetdata += "\n\n      Liabilities:           \n";
+
+
+            //===============================================================================================================================
+
+            if (acpay == "dr")
+            {
+                traildata += "    Account payable                   " + acpaytotal + "                    \n";
+                totaldr += acpaytotal;
+
+                balancesheetdata += "                 Account payable  =  " + acpaytotal + "\n";
+                balanceliability.Add(acpaytotal);
+            }
+            else
+            {
+                traildata += "    Account payable                                                         " + acpaytotal + "    \n";
+                totalcr += acpaytotal;
+
+                balancesheetdata += "                 Account payable  =  " + acpaytotal + "\n";
+                balanceliability.Add(acpaytotal);
+            }
+
+
+            //===============================================================================================================================
+
+            if (notepay == "dr")
+            {
+                traildata += "    Note payable                     " + notepaytotal + "                    \n";
+                totaldr += notepaytotal;
+
+                balancesheetdata += "                 Note payable  =  " + notepaytotal + "\n";
+                balanceliability.Add(notepaytotal);
+            }
+            else
+            {
+                traildata += "    Note payable                                                               " + notepaytotal + "    \n";
+                totalcr += notepaytotal;
+
+                balancesheetdata += "                 Note payable  =  " + notepaytotal + "\n";
+                balanceliability.Add(notepaytotal);
+            }
+
+
+
+            //===============================================================================================================================
+
+            balancesheetdata += "\n\n      Capital stock:           \n";
+
+            //===============================================================================================================================
+
+
+            if (cap == "dr")
+            {
+                traildata += "    Capital stock                                " + captotal + "                    \n";
+                totaldr += captotal;
+
+                balancesheetdata += "                 Capital stock  =  " + captotal + "\n";
+                balanceowner.Add(captotal);
+            }
+            else
+            {
+                traildata += "    Capital stock                                                                " + captotal + "    \n";
+                totalcr += captotal;
+
+                balancesheetdata += "                 Capital stock  =  " + captotal + "\n";
+                balanceowner.Add(captotal);
+            }
+
+
+
 
 
 
             traildata += "\n\n    Balance                                "+totaldr+"                                      "+totalcr+"\n";
             MessageBox.Show(traildata);
-            //=====================================================================================================
+
+
+
+            //===============================================================================================================================
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            double re = 0;
+            double ex = 0;
+            double net = 0;
+
+            for (int i = 0; i < incomeExpence.Count; i++)
+            {
+                ex += incomeExpence[i];
+            }
+            for (int i = 0; i < incomerevenue.Count; i++)
+            {
+                re += incomerevenue[i];
+            }
+
+
+            if(re > ex )
+            {
+                net = re - ex;
+                incomedata += "\n\n Net Income  =  " + net + "    Profit";
+            }
+            if(ex > re)
+            {
+                net = ex - re;
+                incomedata += "\n\n Net Income  =  " + net + "    Loss";
+            }
+
+            MessageBox.Show(incomedata);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            double asseststotal = 0;
+            double liabilitytotal = 0;
+            double ownerequitytotal = 0;
+            double combine = 0;
+
+
+            //=========================================================================================================================
+
+
+            for (int i = 0; i < balanceassest.Count; i++)
+            {
+                asseststotal += balanceassest[i];
+            }
+
+
+            balancesheetdata += "\n                                 Assest total =  " + asseststotal + "\n";
+
+
+
+
+
+
+
+            for (int i = 0; i < balanceliability.Count; i++)
+            {
+                liabilitytotal += balanceliability[i];
+            }
+
+            
+            balancesheetdata += "\n                           Liabilty total =  " + liabilitytotal + "\n";
+
+
+
+
+
+
+
+            for (int i = 0; i < balanceowner.Count; i++)
+            {
+                ownerequitytotal += balanceowner[i];
+            }
+
+
+            balancesheetdata += "\n                           Owner equity =  " + ownerequitytotal + "\n";
+
+
+            combine = liabilitytotal + ownerequitytotal;
+
+            balancesheetdata += "\n                                   Value =  " + combine + "\n";
+
+
+            MessageBox.Show(balancesheetdata);
         }
     }
 }
