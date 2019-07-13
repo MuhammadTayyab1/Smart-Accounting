@@ -39,6 +39,11 @@ namespace WindowsFormsApplication37
         List<double> expdr = new List<double>();
         List<double> serdr = new List<double>();
         List<double> divdr = new List<double>();
+        List<double> bandr = new List<double>();
+        List<double> dradr = new List<double>();
+        List<double> capdr = new List<double>();
+        List<double> assdr = new List<double>();
+        List<double> landr = new List<double>();
 
         List<double> cashcr = new List<double>();
         List<double> acreccr = new List<double>();
@@ -48,6 +53,11 @@ namespace WindowsFormsApplication37
         List<double> expcr = new List<double>();
         List<double> sercr = new List<double>();
         List<double> divcr = new List<double>();
+        List<double> bancr = new List<double>();
+        List<double> dracr = new List<double>();
+        List<double> capcr = new List<double>();
+        List<double> asscr = new List<double>();
+        List<double> lancr = new List<double>();
 
 
         double cashtotal = 0;
@@ -66,6 +76,16 @@ namespace WindowsFormsApplication37
         string ser = "";
         double divtotal = 0;
         string div = "";
+        double bantotal = 0;
+        string ban = "";
+        double dratotal = 0;
+        string dra = "";
+        double captotal = 0;
+        string cap = "";
+        double asstotal = 0;
+        string ass = "";
+        double lantotal = 0;
+        string lan = "";
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -280,6 +300,26 @@ namespace WindowsFormsApplication37
             {
                 divdr.Add(dr1);
             }
+            else if (d1 == "Bank")
+            {
+                bandr.Add(dr1);
+            }
+            else if (d1 == "Drawing")
+            {
+                dradr.Add(dr1);
+            }
+            else if (d1 == "Capital stock")
+            {
+                capdr.Add(dr1);
+            }
+            else if (d1 == "Assit")
+            {
+                assdr.Add(dr1);
+            }
+            else if (d1 == "Land")
+            {
+                landr.Add(dr1);
+            }
 
             //==========================================================
 
@@ -318,6 +358,26 @@ namespace WindowsFormsApplication37
             {
                 divcr.Add(cr1);
             }
+            else if (c1 == "Bank")
+            {
+                bancr.Add(cr1);
+            }
+            else if (c1 == "Drawing")
+            {
+                dracr.Add(cr1);
+            }
+            else if (c1 == "Capital stock")
+            {
+                capcr.Add(cr1);
+            }
+            else if (c1 == "Assit")
+            {
+                asscr.Add(cr1);
+            }
+            else if (c1 == "Land")
+            {
+                lancr.Add(cr1);
+            }
 
             //==========================================================
 
@@ -354,6 +414,26 @@ namespace WindowsFormsApplication37
                 else if (d2 == "Divideds")
                 {
                     divdr.Add(dr2);
+                }
+                else if (d2 == "Bank")
+                {
+                    bandr.Add(dr2);
+                }
+                else if (d2 == "Drawing")
+                {
+                    dradr.Add(dr2);
+                }
+                else if (d2 == "Capital stock")
+                {
+                    capdr.Add(dr2);
+                }
+                else if (d2 == "Assit")
+                {
+                    assdr.Add(dr2);
+                }
+                else if (d2 == "Land")
+                {
+                    landr.Add(dr2);
                 }
             }
 
@@ -392,6 +472,26 @@ namespace WindowsFormsApplication37
                 else if (c2 == "Divideds")
                 {
                     divcr.Add(cr2);
+                }
+                else if (c2 == "Bank")
+                {
+                    bancr.Add(cr2);
+                }
+                else if (c2 == "Drawing")
+                {
+                    dracr.Add(cr2);
+                }
+                else if (c2 == "Capital stock")
+                {
+                    capcr.Add(cr2);
+                }
+                else if (c2 == "Assit")
+                {
+                    asscr.Add(cr2);
+                }
+                else if (c2 == "Land")
+                {
+                    lancr.Add(cr2);
                 }
             }
 
@@ -643,6 +743,162 @@ namespace WindowsFormsApplication37
                 div = "dr";
             }
 
+
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            // Bank
+            double bancountdr = 0;
+            double bancountcr = 0;
+
+            
+
+
+            for (int i = 0; i < bandr.Count; i++)
+            {
+                bancountdr += bandr[i];
+            }
+            for (int i = 0; i < bancr.Count; i++)
+            {
+                bancountcr += bancr[i];
+            }
+
+
+            if (bancountcr > bancountdr)
+            {
+                bantotal = bancountcr - bancountdr;
+                ban = "cr";
+            }
+            if (bancountdr > bancountcr)
+            {
+                bantotal = bancountdr - bancountcr;
+                ban = "dr";
+            }
+
+
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            // Drawing
+            double dracountdr = 0;
+            double dracountcr = 0;
+
+            
+
+
+            for (int i = 0; i < dradr.Count; i++)
+            {
+                dracountdr += dradr[i];
+            }
+            for (int i = 0; i < dracr.Count; i++)
+            {
+                dracountcr += dracr[i];
+            }
+
+
+            if (dracountcr > dracountdr)
+            {
+                dratotal = dracountcr - dracountdr;
+                dra = "cr";
+            }
+            if (dracountdr > dracountcr)
+            {
+                dratotal = dracountdr - dracountcr;
+                dra = "dr";
+            }
+
+
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            // Captial Stock
+            double capcountdr = 0;
+            double capcountcr = 0;
+
+            
+
+
+            for (int i = 0; i < capdr.Count; i++)
+            {
+                capcountdr += capdr[i];
+            }
+            for (int i = 0; i < capcr.Count; i++)
+            {
+                capcountcr += capcr[i];
+            }
+
+
+            if (capcountcr > capcountdr)
+            {
+                captotal = capcountcr - capcountdr;
+                cap = "cr";
+            }
+            if (capcountdr > capcountcr)
+            {
+                captotal = capcountdr - capcountcr;
+                cap = "dr";
+            }
+
+
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            // Assest
+            double asscountdr = 0;
+            double asscountcr = 0;
+
+            
+
+
+            for (int i = 0; i < assdr.Count; i++)
+            {
+                asscountdr += assdr[i];
+            }
+            for (int i = 0; i < asscr.Count; i++)
+            {
+                asscountcr += asscr[i];
+            }
+
+
+            if (asscountcr > asscountdr)
+            {
+                asstotal = asscountcr - asscountdr;
+                ass = "cr";
+            }
+            if (asscountdr > asscountcr)
+            {
+                asstotal = asscountdr - asscountcr;
+                ass = "dr";
+            }
+
+
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            // Land
+            double lancountdr = 0;
+            double lancountcr = 0;
+
+           
+
+
+            for (int i = 0; i < landr.Count; i++)
+            {
+                lancountdr += landr[i];
+            }
+            for (int i = 0; i < lancr.Count; i++)
+            {
+                lancountcr += lancr[i];
+            }
+
+
+            if (lancountcr > lancountdr)
+            {
+                lantotal = lancountcr - lancountdr;
+                lan = "cr";
+            }
+            if (lancountdr > lancountcr)
+            {
+                lantotal = lancountdr - lancountcr;
+                lan = "dr";
+            }
+
+
             string show = "              T-Accounts Solution\n\n\n";
 
             show += ("Cash                            =  " + cashtotal + "    " + cash)+"\n";
@@ -653,6 +909,11 @@ namespace WindowsFormsApplication37
             show += ("Expences                      =  " + exptotal + "    " + exp)+"\n";
             show += ("Services                       =  " + sertotal + "    " + ser)+"\n";
             show += ("divided                        =  " + divtotal + "    " + div)+"\n";
+            show += ("Bank                            =  " + bantotal + "    " + ban) + "\n";
+            show += ("Drawing                      =  " + dratotal + "    " + dra) + "\n";
+            show += ("Capital stock              =  " + captotal + "    " + cap) + "\n";
+            show += ("Assest                         =  " + asstotal + "    " + ass) + "\n";
+            show += ("Land                            =  " + lantotal + "    " + lan) + "\n";
 
             MessageBox.Show(show);
 
@@ -770,6 +1031,81 @@ namespace WindowsFormsApplication37
                 traildata += "    Dividend                                                                       " + divtotal + "    \n";
                 totalcr += divtotal;
             }
+
+            // ===================================================================================================
+
+            if (ban == "dr")
+            {
+                traildata += "    Bank                                " + bantotal + "                    \n";
+                totaldr += bantotal;
+            }
+            else
+            {
+                traildata += "    Bank                                                                              " + bantotal + "    \n";
+                totalcr += bantotal;
+            }
+
+            //=====================================================================================================
+
+
+
+            if (dra == "dr")
+            {
+                traildata += "    Drawing                               " + dratotal + "                    \n";
+                totaldr += dratotal;
+            }
+            else
+            {
+                traildata += "    Drawing                                                                        " + dratotal + "    \n";
+                totalcr += dratotal;
+            }
+
+            //=====================================================================================================
+
+
+            if (cap == "dr")
+            {
+                traildata += "    Capital stock                                " + captotal + "                    \n";
+                totaldr += captotal;
+            }
+            else
+            {
+                traildata += "    Capital stock                                                                " + captotal + "    \n";
+                totalcr += captotal;
+            }
+
+            //=====================================================================================================
+
+
+            if (ass == "dr")
+            {
+                traildata += "    Assest                                " + asstotal + "                    \n";
+                totaldr += asstotal;
+            }
+            else
+            {
+                traildata += "    Assest                                                                            " + asstotal + "    \n";
+                totalcr += asstotal;
+            }
+
+            //=====================================================================================================
+
+
+
+            if (lan == "dr")
+            {
+                traildata += "    Land                                " + lantotal + "                    \n";
+                totaldr += lantotal;
+            }
+            else
+            {
+                traildata += "    Land                                                                              " + lantotal + "    \n";
+                totalcr += lantotal;
+            }
+
+            //=====================================================================================================
+
+
 
             traildata += "\n\n    Balance                                "+totaldr+"                                      "+totalcr+"\n";
             MessageBox.Show(traildata);
